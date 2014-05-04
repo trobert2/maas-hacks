@@ -1,0 +1,19 @@
+=== modified file 'src/provisioningserver/power_schema.py'
+--- src/provisioningserver/power_schema.py	2014-04-23 14:21:03 +0000
++++ src/provisioningserver/power_schema.py	2014-04-29 20:40:05 +0000
+@@ -242,4 +242,11 @@
+             make_json_field('power_pass', "Power password"),
+         ],
+     },
++    {
++        'name': 'vmrunapi',
++        'description': 'VMWare Workstation / ESXI',
++        'fields': [
++            make_json_field('power_address', "Server IP address"),
++            make_json_field('power_user', "Username"),
++            make_json_field('power_pass', "Password"),
++            make_json_field('vm_name', "VM name"),
++        ],
++    },
+ ]
+

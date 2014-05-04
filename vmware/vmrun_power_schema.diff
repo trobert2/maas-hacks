@@ -1,7 +1,7 @@
 === modified file 'src/provisioningserver/power_schema.py'
 --- src/provisioningserver/power_schema.py	2014-04-23 14:21:03 +0000
 +++ src/provisioningserver/power_schema.py	2014-04-29 20:40:05 +0000
-@@ -242,4 +242,11 @@
+@@ -242,4 +242,14 @@
              make_json_field('power_pass', "Power password"),
          ],
      },

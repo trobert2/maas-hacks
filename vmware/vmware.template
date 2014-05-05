@@ -3,15 +3,13 @@
 # Control virtual system's "power" through vmware.
 #
 
-# Parameters.
 power_change={{power_change}}
 power_address={{power_address}}
 power_user={{power_user}}
 power_pass={{power_pass}}
 vm_name={{vm_name}}
-# vmware={{vmware}}
+vmware={{vmware}}
 
-# Choose command for vmware to make the requested power change happen.
 formulate_power_command() {
   if [ ${power_change} = 'on' ]
   then
@@ -21,34 +19,8 @@ formulate_power_command() {
   fi
 }
 
-
-# Express system's current state as expressed by vmware as "on" or "off".
-formulate_power_state() {
-    case $1 in
-    'Powered on') echo 'on' ;;
-    'Powered off') echo 'off' ;;
-    *)
-        echo "Got unknown power state from vmware: '$1'" >&2
-        exit 1
-    esac
-}
-
-
-# Issue command to vmware, for the given system.
 issue_vmware_command() {
-    # ${vmware} $power_address $power_user $power_pass ${vm_name} $1
-    python vmware.py $power_address $power_user $power_pass ${vm_name} $1
+    ${vmware} $power_address $power_user $power_pass $vm_name $1
 }
 
-
-# Get the given system's power state: 'on' or 'off'.
-get_power_state() {
-    vmware_state=$(issue_vmware_command domstate)
-    formulate_power_state ${vmware_state}
-}
-
-
-if [ "$(get_power_state)" != "${power_change}" ]
-then
-    issue_vmware_command $(formulate_power_command)
-fi
+issue_vmware_command $(formulate_power_command)

@@ -1,4 +1,4 @@
-=== modified file 'src/provisioningserver/power_schema.py'
+unchanged:
 --- src/provisioningserver/power_schema.py	2014-04-23 14:21:03 +0000
 +++ src/provisioningserver/power_schema.py	2014-04-29 20:40:05 +0000
 @@ -242,4 +242,14 @@
@@ -16,4 +16,15 @@
 +        ],
 +    },
  ]
-
+only in patch2:
+unchanged:
+--- src/maasserver/models/node.py	2014-05-05 05:34:55.494725483 -0700
++++ src/maasserver/models/node.py	2014-05-05 04:42:13.910484567 -0700
+@@ -810,6 +810,7 @@
+         power_params.setdefault('username', '')
+         power_params.setdefault('power_id', self.system_id)
+         power_params.setdefault('power_driver', '')
++        power_params.setdefault('vmware', '/usr/bin/vmware.py')
+ 
+         # The "mac" parameter defaults to the node's primary MAC
+         # address, but only if not already set.
